@@ -6,7 +6,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    products: [],
+    products: [
+      {
+        price: 0,
+        name: "",
+      },
+    ],
   },
   getters: {
     saleProducts: (state) => {
@@ -20,7 +25,7 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    reducePrice: (state) => {
+    reducePrice: state => {
       state.products.forEach((product) => {
         product.price -= 10;
       });
@@ -33,10 +38,10 @@ export default new Vuex.Store({
     async fetchProducts(context) {
       await axios
         .get("http://localhost:3000/products")
-        .then((response) => {
+        .then(response => {
           context.commit("loadAPIdataToStore", response.data);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },

@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <!-- <ProductListOne v-bind:products="products" />
-    <ProductListTwo v-bind:products="products" /> -->
     <ProductListOne />
     <ProductListTwo />
   </div>
@@ -9,23 +7,15 @@
 <script>
 import ProductListOne from "./components/ProductListOne";
 import ProductListTwo from "./components/ProductListTwo";
-export default {
-  name: "app",
-  data() {
-    return {
-      // products: [
-      //   { name: "Samsung", price: 200 },
-      //   { name: "Sony", price: 300 },
-      //   { name: "Asus", price: 400 },
-      //   { name: "Apple", price: 1000 },
-      // ],
-    };
-  },
+import { Component, Vue } from "vue-property-decorator";
+@Component({
   components: {
+    name: "app",
     ProductListOne,
     ProductListTwo,
   },
-};
+})
+export default class App extends Vue {}
 </script>
 <style>
 body {

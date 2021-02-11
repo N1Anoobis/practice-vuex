@@ -9,22 +9,19 @@
     </ul>
   </div>
 </template>
-<script>
-export default {
-  //   props: ["products"],
-  data() {
-    return {};
-  },
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
-    saleProducts() {
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+@Component
+export default class ProductListOne extends Vue {
+
+  get products() {
+    return this.$store.state.products;
+  }
+  get saleProducts() {
     return this.$store.getters.saleProducts;
-  },
-  },
-  
-};
+  }
+ 
+}
 </script>
 <style scoped>
 #product-list-one {

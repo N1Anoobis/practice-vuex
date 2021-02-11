@@ -10,26 +10,22 @@
     <button v-on:click="reducePrice">Reduce</button>
   </div>
 </template>
-<script>
-export default {
-  //   props: ["products"],
-  data() {
-    return {};
-  },
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
-  },
-  methods: {
-    reducePrice: function() {
-      this.$store.commit("reducePrice");
-    },
-  },
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+@Component
+export default class ProductListTwo extends Vue {
+  get products() {
+    return this.$store.state.products;
+  }
+
+  reducePrice() {
+    this.$store.commit("reducePrice");
+  }
+
   mounted() {
     this.$store.dispatch("fetchProducts");
-  },
-};
+  }
+}
 </script>
 <style scoped>
 #product-list-two {
